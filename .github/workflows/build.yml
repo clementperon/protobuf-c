@@ -113,7 +113,7 @@ jobs:
         run: brew install protobuf abseil
       - name: Run cmake tests
         run: |
-          cmake -DCMAKE_BUILD_TYPE=${{ matrix.build_type }} -DBUILD_TESTS=ON -DCMAKE_INSTALL_PREFIX=protobuf-c-bin -S "build-cmake" -B "build"
+          cmake -DCMAKE_BUILD_TYPE=${{ matrix.build_type }} -DBUILD_TESTS=ON -DCMAKE_INSTALL_PREFIX=protobuf-c-bin -S . -B "build"
           cmake --build "build" -j3
           cmake --build "build" --target test
           cmake --build "build" --target install
@@ -173,7 +173,7 @@ jobs:
           cmake --build "build" --target install
       - name: Run cmake tests
         run: |
-          cmake -G "NMake Makefiles" -DCMAKE_BUILD_TYPE=${{ matrix.build-type }} -DBUILD_TESTS=ON -DCMAKE_INSTALL_PREFIX=~/protobuf-c-bin -DBUILD_SHARED_LIBS=${{ matrix.shared-lib }} -DProtobuf_ROOT="~/protobuf-bin" -Dabsl_ROOT="~/abseil-bin" -Dutf8_range_ROOT="~/utf8_range-bin" -S "build-cmake" -B "build"
+          cmake -G "NMake Makefiles" -DCMAKE_BUILD_TYPE=${{ matrix.build-type }} -DBUILD_TESTS=ON -DCMAKE_INSTALL_PREFIX=~/protobuf-c-bin -DBUILD_SHARED_LIBS=${{ matrix.shared-lib }} -DProtobuf_ROOT="~/protobuf-bin" -Dabsl_ROOT="~/abseil-bin" -Dutf8_range_ROOT="~/utf8_range-bin" -S . -B "build"
           cmake --build "build" -j3
           cmake --build "build" --target test
           cmake --build "build" --target install

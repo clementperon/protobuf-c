@@ -81,7 +81,7 @@ if(MSVC)
 
 endif()
 
-get_filename_component(MAIN_DIR ${CMAKE_CURRENT_SOURCE_DIR} PATH)
+set(MAIN_DIR ${PROJECT_SOURCE_DIR})
 set(TEST_DIR ${MAIN_DIR}/t)
 
 add_library(protobuf-c ${MAIN_DIR}/protobuf-c/protobuf-c.c)
@@ -319,7 +319,7 @@ install(
 
 include(CMakePackageConfigHelpers)
 configure_package_config_file(
-  ${CMAKE_CURRENT_SOURCE_DIR}/Config.cmake.in
+  ${CMAKE_CURRENT_SOURCE_DIR}/cmake/Config.cmake.in
   "${CMAKE_CURRENT_BINARY_DIR}/protobuf-c-config.cmake"
   INSTALL_DESTINATION "lib/cmake/protobuf-c")
 
